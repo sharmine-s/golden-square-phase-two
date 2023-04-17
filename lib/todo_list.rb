@@ -5,26 +5,31 @@ class TodoList
     @todo_list = []
   end
 
-  def add(todo) # todo is an instance of Todo
-    # Returns nothing
+  def add(todo)
     @todo_list << todo
   end
 
   def incomplete
-    incomplete = []
+    incompleted = []
     @todo_list.each { |todo|
       if todo.done? == false
-        incomplete << todo
+        incompleted << todo
       end
     }
-    return incomplete
+    return incompleted
   end
 
   def complete
-    # Returns all complete todos
+    completed = []
+    @todo_list.each { |todo|
+      if todo.done? == true
+        completed << todo
+      end
+    }
+    return completed
   end
 
   def give_up!
-    # Marks all todos as complete
+    @todo_list.each { |todo| todo.mark_done! }
   end
 end
